@@ -1,0 +1,8 @@
+{
+    "name": "EDH Deck Check",
+    "image": "https://edh-deck-check.vercel.app/header.png",
+    "link": "https://edh-deck-check.vercel.app/",
+    "tags": ["Vue", "TypeScript"],
+    "description": "How many combos does your EDH deck have?)",
+    "date": "2022-10-12"
+  }
