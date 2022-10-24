@@ -3,7 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "lint": "eslint . --ext .vue,.js,.ts --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.ts,.json --fix --ignore-path .gitignore",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -13,13 +13,15 @@
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.26.0",
-    "eslint-plugin-vue": "^9.6.0",
     "nuxt": "3.0.0-rc.12",
-    "typescript": "^4.8.4",
-    "vite-plugin-eslint": "^1.8.1"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "@nuxt/content": "^2.2.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
     "primeicons": "^6.0.1",
     "primevue": "^3.18.0"
   }

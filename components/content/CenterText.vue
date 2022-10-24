@@ -1,7 +1,7 @@
 <script lang="ts">
 export default {
-  name: 'CenterText'
-}
+  name: "CenterText",
+};
 </script>
 
 <template>
@@ -11,8 +11,8 @@ export default {
 </template>
 
 <style scoped>
-  div {
-    text-align: center;
-    margin: 0 auto;
-  }
+div {
+  text-align: center;
+  margin: 0 auto;
+}
 </style>

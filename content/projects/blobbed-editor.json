@@ -1,8 +1,8 @@
 {
-    "name": "Blobbed Editor",
-    "image": "https://github.com/BrettOrmsby/blobbed-editor/raw/master/images/regular.png",
-    "link": "https://blobbededitor.vercel.app/",
-    "tags": ["Design","Vue","JavaScript","highlight.js","html2canvas"],
-    "description": "Create blobbed, syntax-highlighted images of your code.",
-    "date": "2022-8-11"
-  }
+  "name": "Blobbed Editor",
+  "image": "https://github.com/BrettOrmsby/blobbed-editor/raw/master/images/regular.png",
+  "link": "https://blobbededitor.vercel.app/",
+  "tags": ["Design", "Vue", "JavaScript", "highlight.js", "html2canvas"],
+  "description": "Create blobbed, syntax-highlighted images of your code.",
+  "date": "2022-8-11"
+}
