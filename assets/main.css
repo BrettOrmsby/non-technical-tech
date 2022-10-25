@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #8dd0ff;
+    /*TODO: fix this*/
+    --primary-hover: #56bdff;
+    --font-family: 'Fira Code', monospace;
+}
+
+.primary {
+    color: var(--primary)
+}
+
+body {
+    background-color: var(--ground);
+    font-family: var(--font-family)
+}
+
+.container {
+    padding: var(--content-padding);
+}
+
+.p-component {
+    font-family: var(--font-family);
+}

@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "CenterText",
-};
-</script>
-
 <template>
   <div>
     <ContentSlot :use="$slots.default" />
