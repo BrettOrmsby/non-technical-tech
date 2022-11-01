@@ -2,7 +2,6 @@
 
 :root {
     --primary: #8dd0ff;
-    /*TODO: fix this*/
     --primary-hover: #56bdff;
     --font-family: 'Fira Code', monospace;
 }
@@ -13,7 +12,8 @@
 
 body {
     background-color: var(--ground);
-    font-family: var(--font-family)
+    font-family: var(--font-family);
+    margin: 0;
 }
 
 .container {
@@ -22,4 +22,8 @@ body {
 
 .p-component {
     font-family: var(--font-family);
+}
+
+h1 {
+  text-align: center;
 }

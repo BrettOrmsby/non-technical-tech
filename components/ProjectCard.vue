@@ -36,7 +36,8 @@ defineProps<{
 
 <style scoped>
 .p-card {
-  max-width: 500px;
+  max-width: 450px;
+  width: 100%;
   align-self: start;
 }
 
@@ -47,6 +48,8 @@ defineProps<{
 .tags {
   margin-bottom: var(--inline-spacing);
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 
 img {

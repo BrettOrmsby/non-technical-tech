@@ -1,10 +1,5 @@
 {
-    "cSpell.words": [
-        "Scriptable"
-    ],
-    "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAllprettier": true
-  }
+  "cSpell.words": [
+    "Scriptable"
+  ],
 }
