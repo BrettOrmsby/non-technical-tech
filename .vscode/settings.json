@@ -2,4 +2,5 @@
   "cSpell.words": [
     "Scriptable"
   ],
+  "editor.formatOnSave": true,
 }

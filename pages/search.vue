@@ -1,51 +1,78 @@
 <template>
   <div>
     <h1>Search</h1>
-    <Card style="margin-bottom: var(--content-padding)">
+    <Card class="form-card">
       <template #content>
-       <AutoComplete
-          v-model="selectedTags"
-          :multiple="true"
-          :suggestions="tagSuggestions"
-          @complete="searchTags($event)"
-        />
+        <span
+          class="p-input-icon-left input-span"
+          style="margin-bottom: var(--content-padding)"
+        >
+          <i class="pi pi-search" />
+          <InputText
+            v-model="searchText"
+            placeholder="Search"
+            type="text"
+            style="width: 100%"
+          />
+        </span>
+        <span class="input-span" style="display: flex">
+          <label for="tags">Tags</label>
+          <Chips
+            id="tags"
+            v-model="selectedTags"
+            placeholder="Type in a tag and press enter"
+          />
+        </span>
       </template>
     </Card>
-      <ContentList v-slot="{ list }" :query="queryFilter" :key="componentKey">
+    <!-- eslint-disable-next-line -->
+    <ContentList :key="componentKey" :query="{
+        path: '/',
+        sort: [{ date: -1, $numeric: true }],
+        only: [
+          'title',
+          'description',
+          'date',
+          'readTime',
+          'tags',
+          '_path',
+          'link',
+          'name',
+          'image',
+        ],
+      }"
+    >
+      <template #default="{ list }">
         <div class="flex">
-          <template v-for="item of list"
-            :key="item._path">
-            <ProjectCard
-            v-if="item._path.startsWith('/projects')"
-            :project="item"
-          />
-          <ArticleCard v-else :article="item"/>
-          </template>
+          <div v-for="item of matchQuery(list)" :key="item._path">
+            <ProjectCard v-if="item.name" :project="item as ProjectData" />
+            <ArticleCard v-else :article="item as ArticleData" />
           </div>
-        </ContentList>
+        </div>
+      </template>
+      <template #not-found>Not Found </template>
+    </ContentList>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
 import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
+useHead({
+  title: "Search",
+  meta: [
+    {
+      hid: "og-title",
+      property: "og:title",
+      content: "Search • NonTechnical Tech",
+    },
+  ],
+});
 const componentKey = ref(0);
-let { query } = useRoute();
+const { query } = useRoute();
 
-const queryTags = typeof query.tags == "string" ? query.tags.split(",") : []
-const selectedTags = ref(queryTags.filter(e => e));
-
-
-const queryFilter = computed(() => { 
-  componentKey.value += 1
-  return {
-  path: "/",
-  sort: [{ date: -1, $numeric: true }],
-  where: {
-    tags: { $contains: [...selectedTags.value] }
-  },
-  only: ["title", "description", "date", "readTime", "tags", "_path", "link", "name", "image"],
-}})
+const queryTags = typeof query.tags === "string" ? query.tags.split(",") : [];
+const selectedTags = ref(queryTags.filter((e) => e));
+const searchText = ref(typeof query.search === "string" ? query.search : "");
 
 interface ArticleData extends ParsedContent {
   title: string;
@@ -64,58 +91,30 @@ interface ProjectData extends ParsedContent {
   description: string;
 }
 
-type ArticlesAndProjects = (ArticleData | ProjectData)[]
-
-const { data, error } = await useAsyncData(
-  "articles-projects",
-  () => {
-    return queryContent<ArticlesAndProjects>("/")
-      .sort({ date: -1, $numeric: true })
-      .only(["title", "description", "date", "readTime", "tags", "_path", "link", "name", "image"])
-      .find();
-  }
-);
-
-// This should be done a better way
-const articlesAndProjects = data.value as ArticlesAndProjects
-
-if (error.value) {
-  throw createError({
-    statusCode: 500,
-    statusMessage: "Unable to load search results.",
-    fatal: true,
-  });
-}
-
-// get all tags from both articles and projects
-const removeDuplicateStrings = (array: string[]): string[] => {
-  const uniqueValues = [];
-  const seenMap = {};
-
-  for (const item of array) {
-    if (seenMap[item]) {
-      continue;
+const matchQuery = (items: (ArticleData | ProjectData)[]) => {
+  return items.filter((item) => {
+    for (const tag of selectedTags.value) {
+      if (!item.tags.map((e) => e.toLowerCase()).includes(tag.toLowerCase())) {
+        return false;
+      }
     }
-    seenMap[item] = true;
-    uniqueValues.push(item);
-  }
-  return uniqueValues;
+
+    const searchMatchTitle =
+      item.title && item.title.toLowerCase().includes(searchText.value);
+    const searchMatchName: boolean =
+      item.name && item.name.toLowerCase().includes(searchText.value);
+    const searchMatchDescription = item.description
+      .toLowerCase()
+      .includes(searchText.value);
+    const didMatchSearchText =
+      searchMatchDescription || searchMatchName || searchMatchTitle;
+
+    if (!didMatchSearchText) {
+      return false;
+    }
+    return true;
+  });
 };
-
-// get all unique tags
-const tagArrays = [...articlesAndProjects.map((e) => e.tags)];
-const allTags = removeDuplicateStrings(tagArrays.flat());
-const tagSuggestions = ref<string[]>(allTags);
-
-// search tags for auto complete
-const searchTags = (event: { query: string }) => {
-  const lowerCaseQuery = event.query.toLowerCase();
-  tagSuggestions.value = allTags.filter((e) =>
-    e.toLocaleLowerCase().includes(lowerCaseQuery)
-  );
-};
-
-// http://localhost:3000/search?articles=false&projects=false&tags=vue,js,html&name=hfkhasdk
 </script>
 
 <style scoped>
@@ -124,5 +123,25 @@ const searchTags = (event: { query: string }) => {
   justify-content: space-around;
   flex-wrap: wrap;
   gap: var(--content-padding);
+}
+.form-card {
+  margin-bottom: var(--content-padding);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-card :deep(.p-card-content) {
+  padding: 0;
+}
+.input-span {
+  width: 100%;
+}
+.input-span label {
+  align-self: center;
+  margin-right: var(--inline-spacing);
+}
+.p-chips,
+:deep(.p-chips-multiple-container) {
+  width: 100%;
 }
 </style>

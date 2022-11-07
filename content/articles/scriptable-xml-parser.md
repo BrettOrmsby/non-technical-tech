@@ -1,13 +1,14 @@
 ---
 date: 2022-8-04
 readTime: 12
-tags: 
+tags:
   - JavaScript
   - Scriptable
   - Widget
 title: Creating a XML Parser in Scriptable
 description: Go through the steps to make a XML parser in scriptable that can parse RSS feeds using the XMLParser class.
 ---
+
 I originally made a XML parser in Scriptable for my [HTML Widget](https://github.com/Normal-Tangerine8609/Scriptable-HTML-Widget) project to replace the previous one. But if we find the right resource, XML parsing can be used for so much more!
 
 Scriptable widgets regularly rely on data from outside sources to be presented and what data comes in the form of XML and is readable available? If you guessed [RSS feeds](https://www.lifewire.com/what-is-an-rss-feed-4684568) you would be correct!
@@ -77,19 +78,16 @@ Let’s create our `parseXML` function and prepare the `XMLParser` object.
 
 ```javascript
 function parseXML(string) {
-  let parser = new XMLParser(string)
+  let parser = new XMLParser(string);
 
-  parser.didStartElement = (name, attrs) => {
-  }
-  parser.didEndElement = (name) => {
-  }
-  parser.foundCharacters = (text) => {
-  }
+  parser.didStartElement = (name, attrs) => {};
+  parser.didEndElement = (name) => {};
+  parser.foundCharacters = (text) => {};
   parser.parseErrorOccurred = () => {
     console.warn(
       "A parse error occurred, ensure the document is formatted properly."
-    )
-  }
+    );
+  };
 }
 ```
 
@@ -318,7 +316,7 @@ Now we need to change what we saw above into a more readable and easier to work 
 }
 ```
 
-To do this, we will leverage a bit of [recursion](https://en.m.wikipedia.org/wiki/Recursion_(computer_science)) and call a function on each node of `main`. We will start by returning our traversed `main` and creating the function to go over each node called `traverse`.
+To do this, we will leverage a bit of [recursion](<https://en.m.wikipedia.org/wiki/Recursion_(computer_science)>) and call a function on each node of `main`. We will start by returning our traversed `main` and creating the function to go over each node called `traverse`.
 
 ```javascript
   ...
@@ -403,80 +401,79 @@ And there we have it. Our XML parser is complete. There are just a few notes bef
 
 ```javascript
 function parseXML(string) {
-
   let main = {
     isRoot: true,
     name: "root",
     attrs: {},
-    children: []
-  }
-  let target = main
-  let goBack = {}
+    children: [],
+  };
+  let target = main;
+  let goBack = {};
 
-  let parser = new XMLParser(string)
+  let parser = new XMLParser(string);
 
   parser.didStartElement = (name, attrs) => {
-    let backTo = Symbol()
-    goBack[backTo] = target
+    let backTo = Symbol();
+    goBack[backTo] = target;
     let newTarget = {
       name,
       attrs,
       innerText: "",
       children: [],
-      end: backTo
-    }
-    target.children.push(newTarget)
-    target = newTarget
-  }
+      end: backTo,
+    };
+    target.children.push(newTarget);
+    target = newTarget;
+  };
 
   parser.didEndElement = (name) => {
-    let sym = target.end
-    delete target.end
-    target = goBack[sym]
-  }
+    let sym = target.end;
+    delete target.end;
+    target = goBack[sym];
+  };
 
   parser.foundCharacters = (text) => {
     target.innerText +=
-      target.innerText === "" ? text.trim() : " " + text.trim()
-  }
+      target.innerText === "" ? text.trim() : " " + text.trim();
+  };
 
   parser.parseErrorOccurred = () => {
     console.warn(
       "A parse error occurred, ensure the document is formatted properly."
-    )
-  }
+    );
+  };
 
-  parser.parse()
+  parser.parse();
 
   if (!main.isRoot) {
     console.warn(
       "A parse error occurred, ensure the document is formatted properly."
-    )
+    );
   }
-  delete main.isRoot
+  delete main.isRoot;
 
-  return traverse(main)
+  return traverse(main);
 
   function traverse(node) {
-    let newNode = {}
+    let newNode = {};
     for (let child of node.children) {
-      let newChild = traverse(child)
+      let newChild = traverse(child);
 
       if (child.children.length === 0) {
-        newChild = child.innerText
+        newChild = child.innerText;
       }
 
       if (newNode[child.name]) {
         if (Array.isArray(newNode[child.name])) {
-          newNode[child.name].push(newChild)
+          newNode[child.name].push(newChild);
         } else {
-          newNode[child.name] = [newNode[child.name], newChild]
+          newNode[child.name] = [newNode[child.name], newChild];
         }
       } else {
-        newNode[child.name] = newChild
+        newNode[child.name] = newChild;
       }
     }
-    return newNode
+    return newNode;
   }
 }
 ```
@@ -585,6 +582,8 @@ function parseXML(string) {
   ...
 }
 ```
+
+![Shareable Widget](https://favmvdivthdgafcehnfc.supabase.co/storage/v1/object/public/storage/articles/xml-parser-scriptable/shareable-widget.png)
 
 ## Conclusion
 

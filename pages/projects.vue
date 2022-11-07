@@ -21,6 +21,16 @@
 
 <script lang="ts" setup>
 import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
+useHead({
+  title: "Projects",
+  meta: [
+    {
+      hid: "og-title",
+      property: "og:title",
+      content: "Projects • NonTechnical Tech",
+    },
+  ],
+});
 const query: QueryBuilderParams = {
   path: "/projects",
   sort: [{ date: -1, $numeric: true }],

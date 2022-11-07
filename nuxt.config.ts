@@ -1,4 +1,3 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: ["@nuxt/content"],
   css: [
@@ -7,6 +6,14 @@ export default defineNuxtConfig({
     "primeicons/primeicons.css",
     "@/assets/main.css",
   ],
+  content: {
+    highlight: {
+      theme: {
+        default: "github-dark",
+      },
+      preload: ["javascript", "xml", "html", "json"],
+    },
+  },
   build: {
     transpile: ["primevue"],
   },

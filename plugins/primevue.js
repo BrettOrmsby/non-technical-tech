@@ -3,7 +3,8 @@ import Button from "primevue/button";
 import Card from "primevue/card";
 import Chip from "primevue/chip";
 import Toolbar from "primevue/toolbar";
-import AutoComplete from "primevue/autocomplete";
+import Chips from "primevue/chips";
+import InputText from "primevue/inputtext";
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -11,5 +12,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component("Card", Card);
   nuxtApp.vueApp.component("Chip", Chip);
   nuxtApp.vueApp.component("Toolbar", Toolbar);
-  nuxtApp.vueApp.component("AutoComplete", AutoComplete);
+  nuxtApp.vueApp.component("Chips", Chips);
+  nuxtApp.vueApp.component("InputText", InputText);
 });

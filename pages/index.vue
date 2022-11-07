@@ -36,13 +36,7 @@
           v-slot="{ data }"
           path="projects"
           :sort="{ date: -1, $numeric: true }"
-          :only="[
-            'name',
-            'description',
-            'image',
-            'link',
-            'tags',
-          ]"
+          :only="['name', 'description', 'image', 'link', 'tags']"
           :limit="1"
         >
           <ProjectCard :project="data[0]" />

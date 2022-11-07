@@ -9,15 +9,10 @@ interface ArticleData extends ParsedContent {
   tags: string[];
 }
 
-const { data: articleData, error } = await useAsyncData(
-  `content-${path}`,
-  () => {
-    return queryContent<ArticleData>()
-      .where({ _path: path })
-      .only(["title", "description", "date", "readTime", "tags"])
-      .findOne();
-  }
-);
+const { data: article, error } = await useAsyncData(`content-${path}`, () => {
+  return queryContent<ArticleData>().where({ _path: path }).findOne();
+});
+
 if (error.value) {
   throw createError({
     statusCode: 404,
@@ -25,19 +20,62 @@ if (error.value) {
     fatal: true,
   });
 }
+useHead({
+  title: article.value.title,
+  meta: [
+    { name: "description", content: article.value.description },
+    { hid: "og-title", property: "og:title", content: article.value.title },
+    {
+      hid: "og-desc",
+      property: "og:description",
+      content: article.value.description,
+    },
+  ],
+});
 </script>
 
 <template>
   <div>
-    {{ articleData }}
-    <h1>{{ articleData.title }}</h1>
-    <em>{{ articleData.description }}</em>
-    <article>
-      <ContentDoc>
-        <template #not-found>
-          <h1>Article Not Found</h1>
+    <h1>{{ article.title }}</h1>
+    <div class="horizontal-space">
+      <Card>
+        <template #content>
+          <small>{{ article.date }} | {{ article.readTime }}min read</small>
+          <div class="tags">
+            <TagLink v-for="tag of article.tags" :key="tag" :tag="tag" />
+          </div>
+          <em>{{ article.description }}</em>
         </template>
-      </ContentDoc>
-    </article>
+      </Card>
+      <TableOfContents :links="article.body.toc.links" />
+      <article>
+        <ContentRenderer :value="article">
+          <ContentRendererMarkdown :value="article" />
+          <template #empty>
+            <p>No content found.</p>
+          </template>
+        </ContentRenderer>
+      </article>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.p-card:deep(.p-card-content) {
+  padding: 0;
+}
+.horizontal-space {
+  max-width: 70ch;
+  margin: 0 auto;
+}
+.tags {
+  margin-bottom: var(--inline-spacing);
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+small {
+  display: block;
+  margin-bottom: var(--inline-spacing);
+}
+</style>

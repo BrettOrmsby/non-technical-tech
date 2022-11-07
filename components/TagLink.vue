@@ -1,5 +1,5 @@
 <template>
-  <Chip :label="tag" />
+  <a :href="`/search?tags=${encodeURIComponent(tag)}`"><Chip :label="tag" /></a>
 </template>
 
 <script lang="ts" setup>
