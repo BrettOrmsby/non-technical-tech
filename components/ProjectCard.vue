@@ -45,6 +45,16 @@ defineProps<{
   padding-bottom: 0;
 }
 
+:deep(.p-card-header) {
+  height: 200px;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+}
+
 .tags {
   margin-bottom: var(--inline-spacing);
   display: flex;

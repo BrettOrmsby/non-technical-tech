@@ -33,7 +33,7 @@ useHead({
 const query: QueryBuilderParams = {
   path: "/articles",
   sort: [{ date: -1, $numeric: true }],
-  only: ["title", "description", "date", "readTime", "tags", "_path"],
+  only: ["title", "description", "date", "readTime", "tags", "_path", "image"],
 };
 </script>
 

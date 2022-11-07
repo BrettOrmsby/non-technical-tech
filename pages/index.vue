@@ -24,6 +24,7 @@
             'tags',
             'readTime',
             'date',
+            'image',
           ]"
           :limit="1"
         >

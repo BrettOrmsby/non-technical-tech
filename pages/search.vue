@@ -81,6 +81,7 @@ interface ArticleData extends ParsedContent {
   date: string;
   tags: string[];
   _path: string;
+  image: string;
 }
 
 interface ProjectData extends ParsedContent {

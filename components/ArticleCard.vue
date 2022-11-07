@@ -1,5 +1,8 @@
 <template>
   <Card>
+    <template v-if="article.image" #header>
+      <img :alt="article.title" :src="article.image" />
+    </template>
     <template #title>
       {{ article.title }}
     </template>
@@ -24,6 +27,7 @@ type ArticleData = {
   readTime: number;
   date: string;
   tags: string[];
+  image: string;
 };
 
 defineProps<{
@@ -40,6 +44,16 @@ defineProps<{
 
 :deep(.p-card-content) {
   padding-bottom: 0;
+}
+
+:deep(.p-card-header) {
+  height: 200px;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
 }
 
 .tags {

@@ -30,6 +30,11 @@ useHead({
       property: "og:description",
       content: article.value.description,
     },
+    {
+      hid: "og-image",
+      property: "og:image",
+      content: article.value.image,
+    },
   ],
 });
 </script>

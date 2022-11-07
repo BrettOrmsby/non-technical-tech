@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-/*
 
-* check image in first blog poste
-* allow blog postes to have images
-* check metta in all places
-* table of contence and tags and description in article 
-*/
 :root {
     --primary: #8dd0ff;
     --primary-hover: #56bdff;
@@ -30,6 +24,11 @@ body {
 
 .p-component {
     font-family: var(--font-family);
+}
+
+.p-card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
 h1 {

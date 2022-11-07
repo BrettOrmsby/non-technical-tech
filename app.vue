@@ -30,7 +30,7 @@ useHead({
     {
       hid: "og-image",
       property: "og:image",
-      content: "https://domain.com/my-image.jpg",
+      content: "/apple-touch-icon.png",
     },
     {
       hid: "og-url",

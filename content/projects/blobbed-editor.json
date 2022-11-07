@@ -1,6 +1,6 @@
 {
   "name": "Blobbed Editor",
-  "image": "https://github.com/BrettOrmsby/blobbed-editor/raw/master/images/regular.png",
+  "image": "/projects/blobbed-editor.png",
   "link": "https://blobbededitor.vercel.app/",
   "tags": [
     "Design",
