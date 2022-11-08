@@ -46,6 +46,9 @@
     </div>
   </div>
 </template>
+<!-- 
+  TODO: add footer?
+-->
 
 <style scoped>
 .flex {
