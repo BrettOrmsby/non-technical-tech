@@ -9,20 +9,20 @@
       </NuxtLink>
     </template>
     <template #end>
-      <NuxtLink to="/articles">
-        <Button type="button" class="p-button-text">
+      <NuxtLink to="/articles" aria-label="Articles">
+        <Button type="button" class="p-button-text" aria-label="Articles">
           <span class="remove2">Articles</span>
           <i class="pi pi-book icon"></i>
         </Button>
       </NuxtLink>
-      <NuxtLink to="/projects">
-        <Button type="button" class="p-button-text">
+      <NuxtLink to="/projects" aria-label="Projects">
+        <Button type="button" class="p-button-text" aria-label="Projects">
           <span class="remove2">Projects</span>
           <i class="pi pi-code icon"></i>
         </Button>
       </NuxtLink>
-      <NuxtLink to="/search">
-        <Button type="button" class="p-button-text">
+      <NuxtLink to="/search" aria-label="Search">
+        <Button type="button" class="p-button-text" aria-label="Search">
           <span class="remove1">Search</span>
           <i class="pi pi-search icon"></i>
         </Button>

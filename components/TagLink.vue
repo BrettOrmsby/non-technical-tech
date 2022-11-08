@@ -12,6 +12,7 @@ defineProps<{ tag: string }>();
   color: var(--primary-color-text);
   margin-right: var(--inline-spacing);
   font-size: 0.8em;
+  display: inline-block;
 }
 
 .p-chip:hover {

@@ -53,7 +53,7 @@ defineProps<{
 img {
   object-fit: cover;
   object-position: center;
-  height: 100%;
+  height: 200px;
 }
 
 .tags {
