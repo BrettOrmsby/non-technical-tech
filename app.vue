@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 useHead({
-  htmlAttrs: {lang:"en"},
+  htmlAttrs: { lang: "en" },
   titleTemplate: (titleChunk) => {
     return titleChunk
       ? `${titleChunk} • NonTechnical Tech`

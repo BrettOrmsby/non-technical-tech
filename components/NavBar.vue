@@ -70,6 +70,7 @@ onMounted(() => {
   width: 100%;
   padding: 0.5rem 0.5rem;
   z-index: 1002;
+  border-radius: 0;
 }
 
 .absolute {
