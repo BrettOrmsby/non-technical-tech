@@ -1,42 +1,7 @@
-# Nuxt 3 Minimal Starter
+<h1>NonTechnical Tech</h1>
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+<p align="center"><img src="public/apple-touch-icon.png" width="100px"/></p>
 
-## Setup
+https://nontechnicaltech.vercel.app/
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+> Hi, I am Brett Ormsby, and this is my portfolio website where you can see my projects and articles.
