@@ -8,7 +8,7 @@ tags:
   - Design
 title: NonTechnical Tech Evolution
 description: For just under 4 months of existence, this website has changed in many ways.
-image: /articles/non-technical-tech.png
+image: /articles/non-technical-tech.jpg
 ---
 
 NonTechnical tech has went through many changes just in the 4 months it has been operational.

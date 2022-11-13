@@ -1,6 +1,6 @@
 {
   "name": "EDH Deck Check",
-  "image": "/projects/edh-deck-check.png",
+  "image": "/projects/edh-deck-check.jpg",
   "link": "https://edh-deck-check.vercel.app/",
   "tags": [
     "Vue",

@@ -7,7 +7,7 @@ tags:
   - Widget
 title: Creating an XML Parser in Scriptable
 description: Go through the steps to make an XML parser in scriptable that can parse RSS feeds using the XMLParser class.
-image: articles/shareable-widget.png
+image: articles/shareable-widget.jpg
 ---
 
 I originally made an XML parser in Scriptable for my [HTML Widget](https://github.com/Normal-Tangerine8609/Scriptable-HTML-Widget) project to replace the previous one. But if we find the right resource, XML parsing can be used for so much more!
@@ -584,7 +584,7 @@ function parseXML(string) {
 }
 ```
 
-![Shareable Widget](/articles/shareable-widget.png)
+![Shareable Widget](/articles/shareable-widget.jpg)
 
 ## Conclusion
 
