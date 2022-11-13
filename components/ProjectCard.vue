@@ -1,7 +1,12 @@
 <template>
   <Card>
     <template v-if="project.image" #header>
-      <img :alt="project.name" :src="project.image" />
+      <nuxt-img
+        format="webp"
+        :src="project.image"
+        :alt="project.name"
+        :quality="80"
+      />
     </template>
     <template #title>
       {{ project.name }}
