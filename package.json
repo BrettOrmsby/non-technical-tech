@@ -9,14 +9,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/image-edge": "^1.0.0-27769790.4b27db3",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.26.0",
     "nuxt": "3.0.0-rc.12",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "prettier": "^2.7.1"
   },
   "dependencies": {
     "@nuxt/content": "^2.2.0",

@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ["@nuxt/content", "@nuxt/image-edge"],
+  modules: ["@nuxt/content"],
   css: [
     "primevue/resources/themes/bootstrap4-dark-blue/theme.css",
     "primevue/resources/primevue.css",
