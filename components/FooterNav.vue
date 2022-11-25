@@ -9,6 +9,7 @@
         >GitHub</NuxtLink
       >
     </nav>
+    <small><a href="mailto:brettwormsby@outlook.com">Contact me</a></small>
     <small>© Brett Ormsby 2022-{{ new Date().getFullYear() }}</small>
   </footer>
 </template>

@@ -1,17 +1,29 @@
 <template>
   <div>
-    <h1><span class="primary">Non</span>Technical Tech</h1>
-    <Card class="intro">
+    <h1>Hi, I am <span class="primary">Brett Ormsby</span></h1>
+    <p class="subheading">A student and programming hobbyist</p>
+
+    <h2>Self.<span class="primary">About</span></h2>
+    <Card class="text">
       <template #content>
-        &#128075; Hi, I am Brett Ormsby, a student and programming hobbyist from
-        Ontario Canada. I enjoy to read, play sports and board and card games in
-        my spare time. My current interests are Vue.js, TypeScript and
-        Scriptable.
+        I am a current student and programming hobbyist from Ontario, Canada. I
+        enjoy solving problems and creating fun and useful websites. You also
+        might find me reading my latest book or playing card and board games.
       </template>
     </Card>
+
+    <h2>Skills.<span class="primary">list</span>()</h2>
+    <Card class="text">
+      <template #content>
+        <div class="tags">
+          <TagLink v-for="(tag, index) in skills" :key="index" :tag="tag" />
+        </div>
+      </template>
+    </Card>
+
     <div class="flex">
       <div>
-        <h2><span class="primary">new</span> Article()</h2>
+        <h2>Articles.<span class="primary">latest</span>()</h2>
         <ContentQuery
           v-slot="{ data }"
           path="articles"
@@ -32,7 +44,7 @@
         </ContentQuery>
       </div>
       <div>
-        <h2><span class="primary">new</span> Project()</h2>
+        <h2>Projects.<span class="primary">latest</span>()</h2>
         <ContentQuery
           v-slot="{ data }"
           path="projects"
@@ -46,9 +58,17 @@
     </div>
   </div>
 </template>
-<!-- 
-  TODO: add footer?
--->
+
+<script lang="ts" setup>
+const skills = [
+  "Vue",
+  "Typescript",
+  "Javascript",
+  "Primevue",
+  "Nuxt",
+  "Vite",
+].sort();
+</script>
 
 <style scoped>
 .flex {
@@ -57,14 +77,30 @@
   flex-wrap: wrap;
   gap: var(--content-padding);
 }
-.intro {
+h1 {
+  margin-bottom: var(--inline-spacing);
+}
+.subheading {
+  margin-top: 0;
+  opacity: 0.8;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.text {
   max-width: 750px;
   margin: 0 auto;
 }
-.intro:deep(.p-card-body) {
+.text:deep(.p-card-body) {
   padding: 1.25rem;
 }
-.intro:deep(.p-card-content) {
+.text:deep(.p-card-content) {
   padding: 0;
+}
+.tags {
+  justify-content: center;
 }
 </style>

@@ -56,13 +56,6 @@ img {
   height: 200px;
 }
 
-.tags {
-  margin-bottom: var(--inline-spacing);
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
-}
-
 small {
   display: block;
   margin-bottom: var(--inline-spacing);

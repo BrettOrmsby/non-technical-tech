@@ -55,13 +55,6 @@ img {
   height: 200px;
 }
 
-.tags {
-  margin-bottom: var(--inline-spacing);
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
-}
-
 img {
   max-height: 200px;
   object-fit: cover;
