@@ -102,5 +102,6 @@ h2 {
 }
 .tags {
   justify-content: center;
+  margin-bottom: 0;
 }
 </style>

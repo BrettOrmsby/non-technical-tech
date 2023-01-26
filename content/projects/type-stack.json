@@ -1,0 +1,8 @@
+{
+  "name": "TypeStack",
+  "image": "/projects/type-stack.jpg",
+  "link": "https://brettormsby.github.io/typestack/",
+  "tags": ["TypeScript", "Programming Language"],
+  "description": "A functional, stack-based, type-safe programing language",
+  "date": "2023-1-26"
+}
