@@ -5,3 +5,6 @@
 https://nontechnicaltech.vercel.app/
 
 > Hi, I am Brett Ormsby, and this is my portfolio website where you can see my projects and articles.
+
+> **Warning**
+> This Project is no longer developed, see https://github.com/BrettOrmsby/Portfolio for new versions
